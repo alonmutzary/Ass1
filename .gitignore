@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# Ignored files
+ignore_me/
+to_ignore.txt
