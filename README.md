@@ -3,7 +3,7 @@ first assignment
 https://github.com/alonmutzary/Ass1.git
 
 ```bash
-##Project
+Project
 │   .gitignore
 │   CMakeLists.txt
 │   docker-compose.yml
