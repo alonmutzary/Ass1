@@ -2,7 +2,7 @@
 first assignment
 https://github.com/alonmutzary/Ass1.git
 
-''' bash
+'''bash
 C:.
 ├── .gitignore
 ├── CMakeLists.txt
