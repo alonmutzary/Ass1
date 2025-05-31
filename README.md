@@ -4,6 +4,7 @@ https://github.com/alonmutzary/Ass1.git
 
 
 # Project
+# Project
 
 C:.
 ├── .gitignore
@@ -13,16 +14,13 @@ C:.
 ├── Dockerfile.server
 ├── Dockerfile.tests
 ├── README.md
-│
 ├── .vscode
 │ └── settings.json
-│
 ├── src
 │ ├── client
 │ │ ├── main.py
 │ │ ├── tcp_client.py
 │ │ └── user_interface.py
-│ │
 │ └── server
 │ ├── BitArrayLoader.cpp / BitArrayLoader.h
 │ ├── BitArraySaver.cpp / BitArraySaver.h
@@ -37,7 +35,6 @@ C:.
 │ ├── StdHash.h
 │ ├── UrlFileLoader.cpp / UrlFileLoader.h
 │ └── UrlFileSaver.cpp / UrlFileSaver.h
-│
 └── tests
 ├── test_BitArraySaver.cpp
 ├── test_bloom.cpp
