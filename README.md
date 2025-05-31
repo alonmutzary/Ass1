@@ -2,7 +2,7 @@
 first assignment
 https://github.com/alonmutzary/Ass1.git
 
-'''bash
+```bash
 C:.
 ├── .gitignore
 ├── CMakeLists.txt
@@ -40,4 +40,4 @@ C:.
 ├── test_Server.cpp
 ├── test_SocketManager.cpp
 └── test_UrlFileSaver.cpp
-'''
+```
