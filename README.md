@@ -3,8 +3,6 @@ first assignment
 https://github.com/alonmutzary/Ass1.git
 
 ''' bash
-# Project
-
 C:.
 ├── .gitignore
 ├── CMakeLists.txt
