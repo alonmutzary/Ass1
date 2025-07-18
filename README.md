@@ -1,66 +1,290 @@
 # Ass1
 first assignment
-https://github.com/alonmutzary/Ass1.git
-## 📁 Project Structure
+https://github.com/alonmutzary/Ass1.git   
+
+
+ignore this  
+
+
+<p align="center"> <img src="ABAMail.webp" width="150"/> </p>
+
+# Mail Web App
+
+  
+
+This project is a full-featured email management system with a **Node.js backend**, **React frontend**, and a **C++ Bloom filter server**, fully orchestrated using **Docker Compose**.
+
+  
+
+It includes sending, drafting, labeling, deleting, and spam filtering via a custom URL blacklist server.
+
+  
+
+---
+
+  
+
+## Running the Application with Docker Compose
+
+  
+
+> The app consists of 4 services: `web-frontend`, `web-api`, `bloom-server`, and `tests`.
+
+  
+
+###  Prerequisites
+
+* Docker & Docker Compose installed
+
+* Port 5588 available (used by the Bloom server)
+
+  
+
+To free the port if it’s in use:
+
+  
+
+```bash
+
+netstat  -aon | findstr  :5588
+
+taskkill  /PID <pid> /F
 
 ```
-Project/
-│   .gitignore
-│   CMakeLists.txt
-│   docker-compose.yml
-│   Dockerfile.client
-│   Dockerfile.server
-│   Dockerfile.tests
-│   README.md
-│
-├───src
-│   ├───client
-│   │       main.py
-│   │       tcp_client.py
-│   │       user_interface.py
-│   │
-│   └───server
-│           BitArrayLoader.cpp /.h
-│           BitArraySaver.cpp /.h
-│           BloomFilter.cpp /.h
-│           IHashFunction.h
-│           ILoader.h
-│           ISaver.h
-│           LogicHandler.cpp /.h
-│           main.cpp
-│           Server.cpp /.h
-│           SocketManager.cpp /.h
-│           StdHash.h
-│           UrlFileLoader.cpp /.h
-│           UrlFileSaver.cpp /.h
-│
-└───tests
-        test_BitArraySaver.cpp
-        test_bloom.cpp
-        test_FileLoader.cpp
-        test_LogicHandler.cpp
-        test_Server.cpp
-        test_SocketManager.cpp
-        test_UrlFileSaver.cpp
+
+  
+  
+
+---
+
+  
+
+### Start the App
+
+  
+
+In the project root, to build and run all containers, run:
+
+  
+
+```bash
+
+docker  compose  up  --build
+
 ```
 
-## Questions
-### Did the fact that the command names changed require you to modify code that is supposed to be "closed for modification but open for extension"?  
-Yes. 
-In the last version we handled the commands in the main.cpp and therefor the code was not closed for modifications. This is not caused specifically by the command names but by the fact that we could not handle it in the main anymore.  
-In this version, the commands are being handled by the Logic Handler and therefore if we will need to change the command names again we will just change one or two lines to adapt the code to the changes.  
   
-### Did the fact that new commands were added require you to modify code that is supposed to be "closed for modification but open for extension"?  
-No.  
-Since we created the Logic Handler we only needed to add the new command to LogicHandler.cpp.  
-The idea of single responsibility per class and making the Logic Handler open for extension made it easy to add.  
-  
-### Did the fact that the command output format changed require you to modify code that is supposed to be "closed for modification but open for extension"?  
-No.  
-Just like adding commands, the after creating Logic Handler it was easy to change the output since we only rewrote the strings.  
-The idea of single responsibility per class and making the Logic Handler open for extension made it easy to add.  
 
-### Did the fact that input/output now comes from sockets instead of the console require you to modify code that is supposed to be "closed for modification but open for extension"?  
-Yes.  
-In the last version we used cin and cout for I/O and now we changed it completely to use socket for I/O.  
-We made a different structure in the new version that has more abstract handling of I/O for future use of more than one client.
+Once started, the frontend will be available at:
+
+  
+
+* [http://localhost:3000](http://localhost:3000)
+
+  
+
+The API will be running at:
+
+  
+
+* [http://localhost:8080](http://localhost:8080)
+
+  
+
+---
+
+  
+
+### Stopping the App
+
+  
+
+Use:
+
+```bash
+
+Ctrl  +  C
+
+```
+
+  
+
+and then, to clean up used containers:
+
+```bash
+
+docker  compose  down  --remove-orphans
+
+```
+
+  
+
+---
+
+  
+
+### Folder Structure
+
+  
+
+```
+
+project-root/
+
+├── backend/
+
+│ ├── bloom-client/
+
+│ ├── bloom-server/
+
+│ └── web/                      ← Node.js API
+
+├── frontend/Mail-app           ← React app
+
+├── data/                       ← Bloom filter data
+
+├── docs/
+
+├── docker-compose.yml
+
+├── .gitignore
+
+└── README.md
+
+```
+
+  
+
+---
+
+  
+
+## Screenshots
+
+  
+
+
+
+  
+
+### User Registration And Sign-in
+To register, fill the registration form and click submit.  
+
+![Register](docs/createUser.png)  
+
+To sign in, fill the credentials and click sign-in.  
+
+![Sign-in](docs/sign-in.png)  
+
+  
+
+### Compose New Mail
+
+To create new mail, click compose button and fill the sender, recipient and content.  
+Send button will send the mail, Cancel button will save it as draft.  
+
+![Create Mail](docs/createMail.png)
+
+  
+
+### Mail Options - Label, Spam and Delete
+
+Each mail has options menu (☰) in witch can be added to labels (checkbox), reported as spam or get deleted.  
+
+![Options](docs/options.png)
+
+
+### Sign-out
+
+To sign-out, click your profile picture in the top-right corner and click sign-out button.  
+
+![Sign-out](docs/sign-out.png)
+
+---
+## For Developers:
+
+###  Frontend
+
+  
+
+The React frontend is in `frontend/mail-app/`.
+
+  
+
+It uses:
+
+  
+
+*  `React Router` for navigation
+
+*  `Bootstrap` for styling
+
+*  Self-made `Toast` notifications
+
+* Dynamic dark/light mode support
+
+  
+
+To run frontend only:
+
+  
+
+```bash
+
+cd  frontend/mail-app
+
+npm  install
+
+npm  start
+
+```
+
+  
+
+---
+
+  
+
+### Backend
+
+  
+
+The Node.js Express backend is in `backend/web/`.
+
+  
+
+It uses:
+
+  
+
+* JWT-based authentication
+
+* RESTful API for users, mails, labels, and blacklist
+
+* `bloom-client` to filter spam URLs
+
+  
+
+To run backend only:
+
+  
+
+```bash
+
+cd  backend/web
+
+npm  install
+
+node  app.js
+
+```
+
+
+  
+
+
+  
+
+---
+
+ 
